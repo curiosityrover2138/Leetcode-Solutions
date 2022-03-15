@@ -1,0 +1,19 @@
+class Solution {
+public:
+    int countTriples(int n) {
+        int count=0;
+        unordered_map<int,int> umap; //create an unordered map which can store the values of the triplets.
+        for(int i=1;i<=n;i++){
+            umap[i*i]++; //store c^2 in the map
+        }
+        for(int i=1;i<=n;i++){
+            for(int j=1;j<=n;j++){
+                if(umap[abs((i-j)*(i+j))]>0){ //simply brute force the approach to check for other values which satisfy the condition
+                    count++;
+                }
+            }
+        }
+        return count/2;//since each value gets counted twice once for the a and the other for the b
+        
+    }
+};
